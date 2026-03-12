@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Portfolio DUFI | Prof. Ronald Márquez</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons for lightweight SVG icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles for animations & typography -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-gray-900 selection:bg-red-200">
+
+    <!-- Top Navigation Bar -->
+    <header class="w-full flex justify-between items-center py-4 px-6 md:px-12 border-b border-gray-100">
+        <div class="text-sm font-semibold tracking-wide text-gray-800 uppercase">
+            Ronald Márquez <span class="text-red-500">|</span> DUFI Portfolio
+        </div>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+            <button onclick="goHome()" class="p-2 bg-gray-800 text-white rounded hover:bg-red-500 transition-colors">
+                <i data-lucide="home" class="w-4 h-4"></i>
+            </button>
+            <button onclick="goHome()" class="hover:text-red-500 transition-colors">Home</button>
+            <button onclick="showModule('starting-point')" class="hover:text-red-500 transition-colors">Starting Point</button>
+            <button onclick="scrollToGrid()" class="hover:text-red-500 transition-colors">Evidences</button>
+            <button onclick="showModule('general-reflection')" class="hover:text-red-500 transition-colors">General Reflection</button>
+            <button class="p-1 hover:text-red-500 transition-colors">
+                <i data-lucide="search" class="w-[18px] h-[18px]"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main View: Landing Page -->
+    <main id="home-view" class="max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-24 fade-in">
+        
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row items-center md:items-start justify-between gap-12 mb-24">
+            <div class="md:w-3/5 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-bold text-[#004a8e] mb-8 uppercase tracking-wider">
+                    TEACHING PORTFOLIO
+                </h1>
+                <p class="text-lg md:text-xl font-light leading-relaxed text-gray-700 uppercase tracking-wide">
+                    I AM RONALD MÁRQUEZ, ASSISTANT PROFESSOR AT THE HIGHER POLYTECHNIC SCHOOL (UDG). THIS IS MY LEARNING AND PROFESSIONAL DEVELOPMENT PROCESS WITHIN THE FRAMEWORK OF THE DUFI PROGRAM.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start">
+                    <button onclick="scrollToGrid()" class="inline-block border-b-2 border-gray-800 pb-1 text-sm font-semibold tracking-widest uppercase hover:text-red-500 hover:border-red-500 transition-colors">
+                        Explore my evidences and reflections
+                    </button>
+                </div>
+            </div>
+            
+            <div class="md:w-1/3 flex justify-center md:justify-end">
+                <div class="w-64 h-80 overflow-hidden shadow-lg border-4 border-white">
+                    <img 
+                        src="https://i.ibb.co/hFBHZs28/Ronald-Marquez-2.jpg" 
+                        alt="Professor Ronald Marquez" 
+                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid Section -->
+        <section id="modules-section">
+            <h2 class="text-2xl md:text-3xl font-light text-center uppercase tracking-widest mb-12 text-gray-800">
+                Portfolio Structure (DUFI)
+            </h2>
+            
+            <div id="modules-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Modules will be injected here via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail View: Module Content -->
+    <main id="module-view" class="hidden max-w-4xl mx-auto px-6 md:px-12 pt-12 pb-24 fade-in">
+        <button 
+            onclick="goHome()"
+            class="flex items-center text-sm font-semibold tracking-wider uppercase text-gray-500 hover:text-red-500 transition-colors mb-12 group"
+        >
+            <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Home
+        </button>
+
+        <div class="mb-12">
+            <span id="mod-unit" class="text-red-500 font-bold tracking-widest uppercase text-sm mb-2 block"></span>
+            <h1 id="mod-title" class="text-4xl font-extrabold text-gray-900 mb-4 leading-tight"></h1>
+            <h2 id="mod-subtitle" class="text-xl text-gray-500 font-light border-b border-gray-200 pb-6"></h2>
+        </div>
+
+        <div class="relative w-full h-80 mb-12 shadow-lg">
+            <img 
+                id="mod-image"
+                src="" 
+                alt="" 
+                class="w-full h-full object-cover"
+            />
+        </div>
+
+        <article class="prose prose-lg prose-gray max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-red-500 prose-strong:text-gray-900">
+            <div id="mod-content"></div>
+            
+            <div class="mt-12 p-8 bg-gray-50 border-l-4 border-red-500">
+                <h3 class="text-lg font-bold mb-2 uppercase tracking-wide text-gray-900">Teaching Competence Achieved</h3>
+                <p id="mod-competence" class="text-sm text-gray-600 font-light">
+                    <!-- Dynamically injected -->
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-xl font-light tracking-widest uppercase mb-6">Ronald Márquez</h2>
+            <p class="text-sm text-gray-400 font-light mb-8 max-w-xl mx-auto">
+                Teaching Portfolio · DUFI Training · University of Girona · Department of Chemical, Agricultural and Food Technology Engineering.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 text-sm">
+                <a href="https://orcid.org/0000-0001-6003-7487" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">ORCID: 0000-0001-6003-7487</a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57233940100" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">Scopus ID: 57233940100</a>
+                <a href="https://www.udg.edu/ca/directori/pagina-personal?ID=436360" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors">Contact UdG</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Data Array - TRANSLATED TO ENGLISH
+        const modules = [
+            {
+                id: 'starting-point',
+                unit: 'Initial Phase',
+                title: 'Starting Point',
+                subtitle: 'Expectations, challenges, and integration at UdG',
+                image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop',
+                content: `**My arrival at the University of Girona** (September 2025) as an Assistant Professor represents an exciting milestone in my career. After an international trajectory—including teaching at the Universidad de Los Andes (Venezuela), and high-level research at NC State University (USA) and TotalEnergies (France)—I land in Catalonia with a strong foundation in physical chemistry, artificial intelligence, and materials science.\n\n**Learning needs and expectations:**\nUpon starting the Initial Training in University Teaching (DUFI) program, my main need is to fully understand and adapt to the European Higher Education Area (EHEA) and the specific educational model of the UdG. I need to make a conscious transition from a perhaps more traditional teaching vision towards an evaluation totally oriented towards the acquisition of transversal and specific competencies.\n\n**Objectives:**\nMy main objective in this training process is to learn how to integrate my cutting-edge research (circular materials, emulsions, bio-products) naturally and pedagogically solidly into the Chemical Engineering classroom. I want to figure out how to transmit this passion to students not only through content, but by designing active learning activities that turn them into critical thinkers and complex problem solvers.`,
+                competence: "Identification of one's own teaching profile, detection of training needs, and alignment with the institutional context of the University of Girona and the EHEA."
+            },
+            {
+                id: 'evidence-1',
+                unit: 'Evidence 01',
+                title: 'PBL Strategy and the RAIS Method',
+                subtitle: "The student as a product creator",
+                image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop',
+                content: `**Context and description of the evidence:**\nDuring my time as a professor at the Universidad de Los Andes (2009-2013, with recent teaching publications in 2023), I created and implemented the RAIS methodology (*Reproduction of an Innovation Environment in the Classroom*). This Project-Based Learning (PBL) strategy encouraged Chemical Engineering students to develop a product from the initial idea to the laboratory scale, including the analysis of the entire value chain (reflected in the article published in *Educación Química* in 2016 and *Education for Chemical Engineers* in 2023).\n\n**Reflection on the learning achieved:**\nThe analysis of this evidence makes me realize that student motivation multiplies when knowledge is applied to a tangible and industrial reality. As a teacher, I learned that my role is not to dictate theory, but to act as an "innovation facilitator". The challenge I face now, and what I consider progress in my teaching practice, is how to transfer this entrepreneurial experience to the UdG classrooms, adapting it to the new sustainability paradigms (circular economy and waste) typical of the European *Green Deal* that I currently research.`,
+                competence: "Ability to design and apply active learning methodologies (PBL) that bring the professional world closer to the classroom, fostering student entrepreneurship."
+            },
+            {
+                id: 'evidence-2',
+                unit: 'Evidence 02',
+                title: 'Artificial Intelligence in the Classroom',
+                subtitle: 'From memorization to critical thinking',
+                image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
+                content: `**Context and description of the evidence:**\nIn 2025 I joined the *Artificial Intelligence and University Teaching Network* at UdG (ICE). At the same time, I have been a pioneer in the application of Large Language Models (LLMs) in chemistry teaching, publishing an innovative article in the *Journal of Chemical Education* (2025). This evidence is based on the design of an activity where students use AI to create "living" meta-analyses (*living meta-analysis*) on Pickering emulsions.\n\n**Reflection on the learning achieved:**\nIncluding this evidence in my portfolio responds to a profound reflection: how should we evaluate in the LLM era? Students must develop **critical thinking** to validate the AI outputs, ask the right questions, to discern and learn through the right answer, e.g., Human-Centered AI. Teaching is no longer about finding data, but about discerning scientific quality.`,
+                competence: "Critical, ethical, and didactic integration of Artificial Intelligence tools (LLMs) for the transformation of assessment and the promotion of critical thinking."
+            },
+            {
+                id: 'evidence-3',
+                unit: 'Evidence 03',
+                title: 'Leadership, Direction, and Mentoring',
+                subtitle: 'Adapting guidance to each educational level',
+                image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2050&auto=format&fit=crop',
+                content: `**Context and description of the evidence:**\nThis block gathers my experience directing research activities at different educational levels: from the Undergraduate Theses of L. Meza and J. Fernández at ULA (2018-2019), to the accompaniment as a co-mentor of the higher-level doctoral theses of I. Urdaneta and M. Lendewig at North Carolina State University (2023-2024).\n\n**Reflection on the learning achieved:**\nGuiding students has offered me a mirror of my pedagogical practice. I have learned that mentoring is not "one size fits all". With undergraduate students, my task must be scaffolding, providing clear structures. In contrast, with doctoral students, my role evolves towards constant intellectual challenge, fostering their independence to debate biomaterial hypotheses.`,
+                competence: "Adaptability of teaching leadership and ability to accompany, mentor, and guide students of different academic levels in the scientific research process."
+            },
+            {
+                id: 'general-reflection',
+                unit: 'Final Phase',
+                title: 'General Reflection',
+                subtitle: 'Evaluation of the learning process (DUFI)',
+                image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
+                content: `**Comparing the beginning with the objectives achieved:**\nWhen I started this process and wrote the "Starting Point", my main concern was purely methodological and about adapting to the system (how to teach at UdG, how to adapt to the EHEA). After this reflective journey, compiling and analyzing my previous experiences (the RAIS method, the advanced use of AI, and my mentorships), I have made a fundamental mindset shift.\n\nI have understood that my value as a teacher at UdG lies not only in "adapting" to what already exists, but in **contributing my knowledge**. The evidence shows that my strengths lie in the ability to connect the physics and chemistry of materials with real industrial needs (sustainable packaging) and with disruptive technologies (AI).\n\n**Strengths and future challenges:**\nI detect that my passion can spread the spirit of investigation. However, through this self-assessment I have detected aspects where I need to focus my efforts to improve: I need to polish the design of transparent evaluation rubrics and ensure that, despite my high research demands, I do not leave any student behind in the basic fundamentals. This portfolio is not the end, but the navigation manual for my career as a reflective teacher.`,
+                competence: "Achievement of reflective thinking, critical self-assessment, and ethical commitment to the continuous improvement of pedagogical practice."
+            },
+            {
+                id: 'teaching-vision',
+                unit: 'Teaching Vision',
+                title: 'Excellence and Industrial Connection',
+                subtitle: 'Beyond the classroom',
+                image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop',
+                content: `As a complement to my self-training process, I want to capture the vision that guides my daily life. My pedagogical priority is to eliminate the latency between cutting-edge materials research and university education. As reflected in the competitive projects in which I participate, current chemical engineering must respond immediately to real problems.\n\nEducating in the 21st century implies that students are able to see the relationship between a thermodynamic emulsion equation and Europe's environmental directives. This is my challenge as an Assistant Professor at UdG: to fully integrate this macro thinking (industry, sustainability, AI) into the micro (the laboratory and classroom practices), generating professionals who are not only highly qualified, but deeply committed to the environment.`,
+                competence: "Integration of teaching practice with knowledge transfer, aligning learning outcomes with the Sustainable Development Goals (SDGs)."
+            }
+        ];
+
+        // Render Grid
+        const gridContainer = document.getElementById('modules-grid');
+
+        modules.forEach(mod => {
+            const cardHTML = `
+                <div class="flex flex-col group cursor-pointer" onclick="showModule('${mod.id}')">
+                    <div class="relative h-64 w-full overflow-hidden shadow-md mb-3">
+                        <img 
+                            src="${mod.image}" 
+                            alt="${mod.title}"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 group-hover:from-black/90 transition-colors duration-300"></div>
+                        <div class="absolute top-4 left-4 text-white font-bold text-lg tracking-wide shadow-sm">
+                            ${mod.unit}
+                        </div>
+                        <div class="absolute bottom-4 right-4 text-right text-white">
+                            <div class="text-xl font-bold leading-tight">${mod.title}</div>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm font-medium text-gray-600 group-hover:text-red-500 transition-colors underline decoration-gray-300 underline-offset-4 group-hover:decoration-red-300">
+                        ${mod.subtitle}
+                    </div>
+                </div>
+            `;
+            gridContainer.insertAdjacentHTML('beforeend', cardHTML);
+        });
+
+        // Navigation Functions
+        const homeView = document.getElementById('home-view');
+        const moduleView = document.getElementById('module-view');
+
+        window.showModule = function(moduleId) {
+            const mod = modules.find(m => m.id === moduleId);
+            if (!mod) return;
+
+            // Populate data
+            document.getElementById('mod-unit').innerText = mod.unit;
+            document.getElementById('mod-title').innerText = mod.title;
+            document.getElementById('mod-subtitle').innerText = mod.subtitle;
+            document.getElementById('mod-competence').innerText = mod.competence;
+            
+            const modImage = document.getElementById('mod-image');
+            modImage.src = mod.image;
+            modImage.alt = mod.title;
+
+            // Split content into paragraphs and handle markdown formatting
+            const contentDiv = document.getElementById('mod-content');
+            const paragraphsHTML = mod.content.split('\n\n').map(p => {
+                // First handle double asterisks for bold text
+                let formattedText = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                // Then handle single asterisks for italic text
+                formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                
+                return `<p class="mb-6 leading-relaxed font-light text-gray-800 text-lg">${formattedText}</p>`
+            }).join('');
+            contentDiv.innerHTML = paragraphsHTML;
+
+            // Switch views
+            homeView.classList.add('hidden');
+            moduleView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.goHome = function() {
+            moduleView.classList.add('hidden');
+            homeView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.scrollToGrid = function() {
+            // First ensure we are on the home view
+            if (homeView.classList.contains('hidden')) {
+                moduleView.classList.add('hidden');
+                homeView.classList.remove('hidden');
+            }
+            
+            // Allow a small delay for the DOM to render the home view before scrolling
+            setTimeout(() => {
+                document.getElementById('modules-section').scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+        };
+    </script>
+</body>
+</html>
