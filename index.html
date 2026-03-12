@@ -41,9 +41,9 @@
                 <i data-lucide="home" class="w-4 h-4"></i>
             </button>
             <button onclick="goHome()" class="hover:text-red-500 transition-colors">Home</button>
-            <button onclick="showModule('starting-point')" class="hover:text-red-500 transition-colors">Starting Point</button>
-            <button onclick="scrollToGrid()" class="hover:text-red-500 transition-colors">Evidences</button>
-            <button onclick="showModule('general-reflection')" class="hover:text-red-500 transition-colors">General Reflection</button>
+            <button onclick="showModule('introduction')" class="hover:text-red-500 transition-colors">Introduction</button>
+            <button onclick="scrollToGrid()" class="hover:text-red-500 transition-colors">Experiences</button>
+            <button onclick="showModule('final-thoughts')" class="hover:text-red-500 transition-colors">Final Thoughts</button>
             <button class="p-1 hover:text-red-500 transition-colors">
                 <i data-lucide="search" class="w-[18px] h-[18px]"></i>
             </button>
@@ -64,7 +64,7 @@
                 </p>
                 <div class="mt-8 flex justify-center md:justify-start">
                     <button onclick="scrollToGrid()" class="inline-block border-b-2 border-gray-800 pb-1 text-sm font-semibold tracking-widest uppercase hover:text-red-500 hover:border-red-500 transition-colors">
-                        Explore my evidences and reflections
+                        Explore my experiences and reflections
                     </button>
                 </div>
             </div>
@@ -107,16 +107,16 @@
             <h2 id="mod-subtitle" class="text-xl text-gray-500 font-light border-b border-gray-200 pb-6"></h2>
         </div>
 
-        <div class="relative w-full h-80 mb-12 shadow-lg">
+        <div class="relative w-full h-80 mb-12 shadow-lg overflow-hidden group">
             <img 
                 id="mod-image"
                 src="" 
                 alt="" 
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
             />
         </div>
 
-        <article class="prose prose-lg prose-gray max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-a:text-red-500 prose-strong:text-gray-900">
+        <article class="prose prose-lg prose-gray max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-strong:text-gray-900">
             <div id="mod-content"></div>
             
             <div class="mt-12 p-8 bg-gray-50 border-l-4 border-red-500">
@@ -148,11 +148,11 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Data Array - UPDATED HUMBLE CONTENT IN ENGLISH
+        // Data Array - UPDATED CONTENT IN ENGLISH
         const modules = [
             {
-                id: 'starting-point',
-                unit: 'Initial Phase',
+                id: 'introduction',
+                unit: 'Introduction',
                 title: 'Starting Point',
                 subtitle: 'Expectations, challenges, and integration at UdG',
                 image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop',
@@ -160,39 +160,39 @@
                 competence: "Identification of one's own teaching profile, detection of training needs, and alignment with the institutional context of the University of Girona and the EHEA."
             },
             {
-                id: 'evidence-1',
-                unit: 'Evidence 01',
+                id: 'experience-1',
+                unit: 'Experience 01',
                 title: 'PBL Strategy and the RAIS Method',
                 subtitle: "The student as a product creator",
                 image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop',
-                content: `**Context and description of the evidence:**\nDuring my time as a professor at the Universidad de Los Andes (2009-2013, with recent teaching publications in 2023), I participated in the design and implementation of the RAIS methodology (*Reproduction of an Innovation Environment in the Classroom*). This Project-Based Learning (PBL) strategy encouraged Chemical Engineering students to develop a product from the initial idea to the laboratory scale, including the analysis of the entire value chain (reflected in the article published in *Educación Química* in 2016 and *Education for Chemical Engineers* in 2023).\n\n**Reflection on the learning achieved:**\nThe analysis of this evidence makes me realize that student motivation grows when knowledge is applied to a tangible and industrial reality. As a teacher, I learned that my role can be approached as a 'facilitator' rather than as a transmitter of theory. The challenge I face now, and what I consider a further step in my teaching practice, is how to transfer this classroom experience to the UdG, adapting it to the new sustainability paradigms (circular economy and waste) typical of the European *Green Deal* that I currently research.`,
+                content: `**Context and description of the experience:**\nDuring my time as a professor at the Universidad de Los Andes (2009-2013, with recent teaching publications in 2023), I participated in the design and implementation of the RAIS methodology (*Reproduction of an Innovation Environment in the Classroom*). This Project-Based Learning (PBL) strategy encouraged Chemical Engineering students to develop a product from the initial idea to the laboratory scale, including the analysis of the entire value chain (reflected in the articles published in [Educación Química in 2016](https://doi.org/10.1016/j.eq.2016.07.001) and [Education for Chemical Engineers in 2023](https://doi.org/10.1016/j.ece.2023.05.005)).\n\n**Reflection on the learning achieved:**\nThe analysis of this experience makes me realize that student motivation grows when knowledge is applied to a tangible and industrial reality. As a teacher, I learned that my role can be approached as a 'facilitator' rather than as a transmitter of theory. The challenge I face now, and what I consider a further step in my teaching practice, is how to transfer this classroom experience to the UdG, adapting it to the new sustainability paradigms (circular economy and waste) typical of the European *Green Deal* that I currently research.`,
                 competence: "Ability to design and apply active learning methodologies (PBL) that bring the professional world closer to the classroom, fostering student initiative."
             },
             {
-                id: 'evidence-2',
-                unit: 'Evidence 02',
+                id: 'experience-2',
+                unit: 'Experience 02',
                 title: 'Artificial Intelligence in the Classroom',
                 subtitle: 'From memorization to critical thinking',
                 image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
-                content: `**Context and description of the evidence:**\nIn 2025 I joined the *Artificial Intelligence and University Teaching Network* at UdG (ICE) and began exploring the application of Large Language Models (LLMs) in chemistry teaching. Recently, I have also collaborated on translating UNESCO AI guidelines to chemical education, sharing this experience in a 2026 publication. This evidence is based on Human Centered AI principles.\n\n**Reflection on the learning achieved:**\nIncluding this evidence responds to a very present reflection today: how do we approach assessment in the GenAI era? I am learning that to avoid "epistemic drift"—where we rely on algorithms without understanding the underlying causal science—students must develop critical thinking to validate AI results. Teaching is gradually shifting from a content delivery model to a knowledge creation model. By maintaining a human-centered pedagogical approach, we can use these tools to foster human reasoning and scientific discernment rather than just automating cognition.`,
+                content: `**Context and description of the experience:**\nIn 2025 I joined the *Artificial Intelligence and University Teaching Network* at UdG (ICE) and began exploring the application of Large Language Models (LLMs) in chemistry teaching, informed by the [living meta-analysis on AI and teaching](https://doi.org/10.1021/acs.jchemed.5c00931). Recently, I have also collaborated on [translating UNESCO AI guidelines to chemical education](https://doi.org/10.1021/acs.jchemed.5c00819), sharing this experience in a 2026 publication. This experience is based on Human Centered AI principles.\n\n**Reflection on the learning achieved:**\nIncluding this experience responds to a very present reflection today: how do we approach assessment in the GenAI era? I am learning that to avoid "epistemic drift"—where we rely on algorithms without understanding the underlying causal science—students must develop critical thinking to validate AI results. Teaching is gradually shifting from a content delivery model to a knowledge creation model. By maintaining a human-centered pedagogical approach, we can use these tools to foster human reasoning and scientific discernment rather than just automating cognition.`,
                 competence: "Critical, ethical, and didactic integration of Artificial Intelligence tools (LLMs) to promote critical AI literacy and prevent epistemic drift."
             },
             {
-                id: 'evidence-3',
-                unit: 'Evidence 03',
+                id: 'experience-3',
+                unit: 'Experience 03',
                 title: 'Leadership, Direction, and Mentoring',
                 subtitle: 'Adapting guidance to each educational level',
                 image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2050&auto=format&fit=crop',
-                content: `**Context and description of the evidence:**\nThis block gathers my experience directing research activities at different educational levels: from the Undergraduate Final Projects (2018-2019), to the accompaniment as a co-mentor of the doctoral theses at North Carolina State University (2023-2024).\n\n**Reflection on the learning achieved:**\nGuiding students has offered me a very sincere and direct view of my pedagogical practice. I have learned that mentoring is not "one size fits all". With undergraduate students, my task focuses more on building clear structures (*scaffolding*). In contrast, with doctoral students, the role evolves towards accompanying the debate of hypotheses, gradually fostering their own autonomy. This learning helps me adapt better to the diversity of students.`,
+                content: `**Context and description of the experience:**\nThis block gathers my experience directing research activities at different educational levels: from the Undergraduate Final Projects (2018-2019), to the accompaniment as a co-mentor of the doctoral theses at North Carolina State University (2023-2024).\n\n**Reflection on the learning achieved:**\nGuiding students has offered me a very sincere and direct view of my pedagogical practice. I have learned that mentoring is not "one size fits all". With undergraduate students, my task focuses more on building clear structures (*scaffolding*). In contrast, with doctoral students, the role evolves towards accompanying the debate of hypotheses, gradually fostering their own autonomy. This learning helps me adapt better to the diversity of students.`,
                 competence: "Adaptability of teaching leadership and ability to accompany, mentor, and guide students of different academic levels in the research process."
             },
             {
-                id: 'general-reflection',
-                unit: 'Final Phase',
+                id: 'final-thoughts',
+                unit: 'Final Thoughts',
                 title: 'General Reflection',
                 subtitle: 'Evaluation of the learning process (DUFI)',
                 image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
-                content: `**Comparing the beginning with the objectives achieved:**\nWhen I started this process and wrote the "Starting Point", my main concern was purely methodological and about adapting to the system (how to approach classes at UdG, how to adapt to the EHEA). After this reflective journey, compiling and analyzing my previous experiences (the RAIS method, the integration of AI, and mentorships), I have gained a very valuable perspective.\n\nI have understood that my development as a teacher at UdG involves not only adapting to the environment, but trying to **share my trajectory**. The evidence shows that I feel comfortable connecting the physics and chemistry of materials with practical needs (sustainable packaging) and with the use of new tools (AI).\n\n**Strengths and future challenges:**\nI trust that my motivation can help awaken the spirit of investigation in the classroom. However, through this self-assessment I have detected aspects where I want to focus efforts to improve: I need to polish the design of more transparent evaluation rubrics and ensure that, while we promote research challenges, we make sure that no student is left behind in the basic fundamentals. This portfolio is a first step to continue improving as a reflective teacher.`,
+                content: `**Comparing the beginning with the objectives achieved:**\nWhen I started this process and wrote the "Introduction", my main concern was purely methodological and about adapting to the system (how to approach classes at UdG, how to adapt to the EHEA). After this reflective journey, compiling and analyzing my previous experiences (the RAIS method, the integration of AI, and mentorships), I have gained a very valuable perspective.\n\nI have understood that my development as a teacher at UdG involves not only adapting to the environment, but trying to **share my trajectory**. The experiences show that I feel comfortable connecting the physics and chemistry of materials with practical needs (sustainable packaging) and with the use of new tools (AI).\n\n**Strengths and future challenges:**\nI trust that my motivation can help awaken the spirit of investigation in the classroom. However, through this self-assessment I have detected aspects where I want to focus efforts to improve: I need to polish the design of more transparent evaluation rubrics and ensure that, while we promote research challenges, we make sure that no student is left behind in the basic fundamentals. This portfolio is a first step to continue improving as a reflective teacher.`,
                 competence: "Achievement of reflective thinking, critical self-assessment, and ethical commitment to the continuous improvement of pedagogical practice."
             },
             {
@@ -216,7 +216,7 @@
                         <img 
                             src="${mod.image}" 
                             alt="${mod.title}"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 group-hover:from-black/90 transition-colors duration-300"></div>
                         <div class="absolute top-4 left-4 text-white font-bold text-lg tracking-wide shadow-sm">
@@ -257,8 +257,10 @@
             const paragraphsHTML = mod.content.split('\n\n').map(p => {
                 // First handle double asterisks for bold text
                 let formattedText = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                // Then handle single asterisks for italic text
+                // Handle single asterisks for italic text
                 formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                // Handle [text](url) links
+                formattedText = formattedText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-red-600 font-semibold hover:text-red-800 underline decoration-red-300 underline-offset-4 transition-colors">$1</a>');
                 
                 return `<p class="mb-6 leading-relaxed font-light text-gray-800 text-lg">${formattedText}</p>`
             }).join('');
