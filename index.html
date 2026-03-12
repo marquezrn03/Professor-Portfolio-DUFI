@@ -74,7 +74,7 @@
                     <img 
                         src="https://i.ibb.co/hFBHZs28/Ronald-Marquez-2.jpg" 
                         alt="Professor Ronald Marquez" 
-                        class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        class="w-full h-full object-cover grayscale transition-all duration-1000 scroll-colorize"
                     />
                 </div>
             </div>
@@ -112,7 +112,7 @@
                 id="mod-image"
                 src="" 
                 alt="" 
-                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+                class="w-full h-full object-cover"
             />
         </div>
 
@@ -148,7 +148,7 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Data Array - UPDATED CONTENT IN ENGLISH
+        // Data Array
         const modules = [
             {
                 id: 'introduction',
@@ -216,7 +216,7 @@
                         <img 
                             src="${mod.image}" 
                             alt="${mod.title}"
-                            class="absolute inset-0 w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 group-hover:from-black/90 transition-colors duration-300"></div>
                         <div class="absolute top-4 left-4 text-white font-bold text-lg tracking-wide shadow-sm">
@@ -233,6 +233,34 @@
             `;
             gridContainer.insertAdjacentHTML('beforeend', cardHTML);
         });
+
+        // Intersection Observer for Scroll Colorization (Applied ONLY to elements with .scroll-colorize)
+        function setupScrollObservers() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // Triggers when 30% of the image enters the viewport
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('grayscale');
+                    } else {
+                        entry.target.classList.add('grayscale');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with the 'scroll-colorize' class (which is just the profile picture now)
+            const images = document.querySelectorAll('.scroll-colorize');
+            images.forEach(img => observer.observe(img));
+        }
+
+        // Initialize observers after DOM and grid are ready
+        document.addEventListener('DOMContentLoaded', setupScrollObservers);
+        // Also call it immediately since we dynamically generated grid content above
+        setupScrollObservers();
 
         // Navigation Functions
         const homeView = document.getElementById('home-view');
